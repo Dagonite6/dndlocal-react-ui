@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text: #021f2c;
+  --background: #ebebeb;
+  --primary-button: #0ba7ea;
+  --secondary-button: #d8f2fd;
+  --accent: #0a96d1;
+}
+
+#root, body, html{
+  height: 100%;
+}
+#root {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  box-sizing: border-box;
+  margin-top: 10rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
