@@ -14,7 +14,7 @@ async function loginUser(credentials) {
     .then(data => data.json())
 }
 
-export default function Signin({ setToken }) {
+export default function Signin() {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
@@ -37,39 +37,41 @@ export default function Signin({ setToken }) {
   }
 
   return (
-    <div className="w-full mt-[50px] max-w-xs">
-      <Title></Title>
-      <form onSubmit={handleSubmit} className="bg-white drop-shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-            Username
-          </label>
-          <input onChange={e => setUserName(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="username" type="text" placeholder="Username" />
-        </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-            Password
-          </label>
-          <input onChange={e => setPassword(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="password" type="password" placeholder="Password" />
-        </div>
-        <div className="flex items-center justify-between">
-          <button onClick={() => navigate('/register')} className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="button">
-            Register
-          </button>
-          <button className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
-            Sign In
-          </button>
-        </div>
-        <div className="pt-[15px] flex justify-center">
-          <span onClick={() => navigate('/passsword-reset')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
-            Forgot Password?
-          </span>
-        </div>
+    <div className='w-full flex justify-center'>
+      <div className="w-full pt-[40px] max-w-sm">
+        <Title/>
+        <form onSubmit={handleSubmit} className="bg-white drop-shadow-md rounded-lg px-8 pt-6 pb-8 my-4">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+              Username
+            </label>
+            <input onChange={e => setUserName(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="username" id="username" type="text" placeholder="Username" autoComplete='username' />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              Password
+            </label>
+            <input onChange={e => setPassword(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="password" id="password" type="password" placeholder="Password" autoComplete='current-password' />
+          </div>
+          <div className="flex items-center justify-between">
+            <button onClick={() => navigate('/register')} className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="button">
+              Register
+            </button>
+            <button className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
+              Sign In
+            </button>
+          </div>
+          <div className="pt-[15px] flex justify-center">
+            <span onClick={() => navigate('/passsword-reset')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
+              Forgot Password?
+            </span>
+          </div>
 
-      </form>
-      <p className="text-center text-gray-200 text-xs">
-        &copy;2023 Dagonite. All rights reserved.
-      </p>
+        </form>
+        <p className="text-center text-gray-200 text-xs">
+          &copy;2023 Dagonite. All rights reserved.
+        </p>
+      </div>
     </div>
   )
 }

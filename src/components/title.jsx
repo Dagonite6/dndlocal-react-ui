@@ -1,5 +1,5 @@
 function Title() {
-    return (<div className="flex flex-col items-center mb-[20px]">
+    return (<div className="flex flex-col items-center">
         <div>
             <p className="text-gray-50 text-sm text-left drop-shadow-sm">
                 not a

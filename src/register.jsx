@@ -42,33 +42,33 @@ export default function Register() {
       }
 
     return (
-        <>
-            <div className="w-full mt-[30px] max-w-xs">
-                <Title></Title>
-                <form onSubmit={handleSubmit} className="bg-white drop-shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+        <div className='flex justify-center'>
+            <div className="w-full pt-[40px] max-w-sm">
+                <Title/>
+                <form onSubmit={handleSubmit} className="bg-white drop-shadow-md rounded-lg px-8 pt-6 pb-8 my-4">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                             Username
                         </label>
-                        <input onChange={e => setUserName(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="username" type="text" placeholder="Username" required/>
+                        <input onChange={e => setUserName(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="username" id="username" type="text" placeholder="Username" autoComplete='username' required/>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
-                        <input onChange={e => setEmail(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="email" type="email" placeholder="name@domain.com" required/>
+                        <input onChange={e => setEmail(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="email" id="email" type="email" placeholder="name@domain.com" autoComplete='email' required/>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                             Password
                         </label>
-                        <input onChange={e => setPassword(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="password" type="password" placeholder="Password" required/>
+                        <input onChange={e => setPassword(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="password" id="password" type="password" placeholder="Password" autoComplete='new-password' required/>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirm_password">
                             Confirm Password
                         </label>
-                        <input onChange={e => setConfirm_password(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="confirm_password" type="password" placeholder="Confirm Password" required/>
+                        <input onChange={e => setConfirm_password(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="confirm_password" id="confirm_password" type="password" placeholder="Confirm Password" autoComplete='new-password' required/>
                     </div>
                     <div className="flex justify-center">
                         <button className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -85,6 +85,6 @@ export default function Register() {
                     &copy;2023 Dagonite. All rights reserved.
                 </p>
             </div>
-        </>
+        </div>
     )
 }

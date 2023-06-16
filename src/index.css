@@ -10,20 +10,12 @@
   --accent: #0a96d1;
 }
 
-#root, body, html{
+body, html{
   height: 100%;
 }
+
 #root {
-  display: flex;
-  justify-content: center;
+  height: 100%;
 }
-.wrapper {
-  box-sizing: border-box;
-  margin-top: 10rem;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-}
+
 
