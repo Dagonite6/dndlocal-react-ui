@@ -76,7 +76,7 @@ export default function Register() {
                         </button>
                     </div>
                     <div className="pt-[15px] flex justify-center ">
-                        <span onClick={() => navigate('/login')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
+                        <span onClick={() => navigate('/')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
                             Already registered? Log in here
                         </span>
                     </div>

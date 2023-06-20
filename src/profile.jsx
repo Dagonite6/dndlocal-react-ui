@@ -20,7 +20,6 @@ export default function Profile() {
         let ignore = false;
         async function startFetching() {
             const response = await getChars()
-            console.log(response)
             setChars(response.results)
         }
         startFetching();
@@ -31,16 +30,18 @@ export default function Profile() {
 
     return (
         <>
-            <div className='w-full flex justify-around items-center pt-3 px-3'>
-                <Title />
-                {localStorage.getItem("access_token") && <Logout />}
+            <div id='header' className='flex justify-center'>
+                <div className='w-full max-w-3xl flex justify-between items-center pt-3 px-3'>
+                    <Title />
+                    <div className='flex flex-row gap-2'><Logout /></div>
+                </div>
             </div>
-            <div className="flex flex-col items-center my-4">
-            <CreateBtn />
+            <div id='char-list' className="flex flex-col items-center my-4">
+                <CreateBtn />
                 <ul className='list-none px-3 w-full my-4 max-w-lg'>
                     {chars.map((char) => {
                         return (
-                            <li className="bg-white drop-shadow-md rounded-lg px-8 pt-6 pb-8 mb-4" key={char.id}>
+                            <li className="bg-white drop-shadow-md rounded-lg px-8 pt-8 pb-8 mb-4" key={char.id}>
                                 <p>{char.name}</p>
                                 <p>Experience: {char.experience}</p>
                                 <p>Race: {char.race}</p>
