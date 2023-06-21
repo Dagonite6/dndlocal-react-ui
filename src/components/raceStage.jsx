@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import RaceOptions from './raceOptions';
 
 
@@ -12,10 +13,10 @@ async function getRaceDetails(category, id) {
     })
 }
 
-export default function RaceSel({ stateChanger }) {
+export default function RaceStage({ stateChanger }) {
+    const [races, setRaces] = useState([])
     const [race, setRace] = useState(JSON.parse(localStorage.getItem('race')) ?? {})
     const [selected, setSelected] = useState(localStorage.getItem('selected') ?? "0")
-
 
     useEffect(() => {
         localStorage.setItem('race', JSON.stringify(race));
@@ -27,9 +28,18 @@ export default function RaceSel({ stateChanger }) {
 
     const handleChange = (prop) => (event) => {
         setSelected(event.target.value)
+        let raceCache = races.find(race => race['id'] === event.target.value);
+        if (raceCache) {
+            console.log("Loading race from cache")
+            setRace(raceCache)
+            return
+        }
+        console.log("Fetching race")
         async function startFetching() {
-            const response = await getRaceDetails(prop, event.target.value);
-            setRace(await response.json())
+            const response = await (await getRaceDetails(prop, event.target.value)).json();
+            response.id = event.target.value
+            setRaces(oldRaces => [...oldRaces, response]);
+            setRace(response)
         }
         startFetching();
     }
@@ -37,10 +47,11 @@ export default function RaceSel({ stateChanger }) {
     return (
         <>
             <div className='relative w-full max-w-3xl'>
+                <div onClick={() => { stateChanger("pers") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl left-0'>&larr;</div>
                 <div onClick={() => { stateChanger("class") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl right-0'>&rarr;</div>
             </div>
             <div className="inline-block relative max-w-2xl">
-                <select onChange={handleChange('races')} name="races" defaultValue={selected} id="races" className='hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
+                <select onChange={handleChange('races')} name="races" defaultValue={selected} id="races" className='text-gray-950 hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
                     <RaceOptions />
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
