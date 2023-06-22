@@ -2,7 +2,7 @@
 
 Communicates with backend server using REST endpoints.
 
-<img style="height: 400px;
+<img style="height: 500px;
   width: auto;" src="https://github.com/Dagonite6/dndlocal-react-ui/blob/main/readme1.png?raw=true"> 
 
 
