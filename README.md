@@ -2,9 +2,8 @@
 
 Communicates with backend server using REST endpoints.
 
-<img style="height: 300px;
-  width: auto;" src="https://github.com/Dagonite6/dndlocal-react-ui/blob/cc9beeeb7e203ee77556c240edc52f7b00ae2162/readme2.jpeg?raw=true"> <img style="height: 300px;
-  width: auto;" src="https://github.com/Dagonite6/dndlocal-react-ui/blob/cc9beeeb7e203ee77556c240edc52f7b00ae2162/readme1.jpeg?raw=true">
+<img style="height: 400px;
+  width: auto;" src="https://github.com/Dagonite6/dndlocal-react-ui/blob/main/readme1.png?raw=true"> 
 
 
 ## Running:
