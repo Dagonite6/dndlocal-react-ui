@@ -21,8 +21,8 @@ function Logout() {
     }
 
     return (
-        <div onClick={signout} className="bg-slate-50 hover:bg-gray-300 focus:bg-gray-300 drop-shadow-md min-w-[85px] rounded-md py-2 px-2 cursor-pointer text-gray-950 text-sm font-bold text-center">
-            Sign out
+        <div onClick={signout} className="bg-slate-50 hover:bg-gray-300 focus:bg-gray-300 drop-shadow-md min-w-[85px] rounded-md py-2 px-2 cursor-pointer flex items-center justify-center">
+            <p className="text-gray-950 text-sm font-bold text-center">Sign out</p>
         </div>
     )
 }

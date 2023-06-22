@@ -54,15 +54,15 @@ export default function Signin() {
             <input onChange={e => setPassword(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="password" id="password" type="password" placeholder="Password" autoComplete='current-password' />
           </div>
           <div className="flex items-center justify-between">
-            <button onClick={() => navigate('/register')} className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button onClick={() => navigate('/register')} className="text-center w-2/5 bg-btn hover:bg-btn-hover focus:bg-btn-hover text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="button">
               Register
             </button>
-            <button className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <button className="text-center w-2/5 bg-btn hover:bg-btn-hover focus:bg-btn-hover text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign In
             </button>
           </div>
           <div className="pt-[15px] flex justify-center">
-            <span onClick={() => navigate('/passsword-reset')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
+            <span onClick={() => navigate('/passsword-reset')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-btn hover:text-btn-hover focus:text-btn-hover">
               Forgot Password?
             </span>
           </div>

@@ -48,10 +48,13 @@ export default function ClassStage({stateChanger}) {
     return (
         <>
             <div className='relative w-full max-w-3xl'>
-                <div onClick={() => {stateChanger("race")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl left-0'>&larr;</div>
-                <div onClick={() => {stateChanger("pers")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl right-0'>&rarr;</div>
+                <div onClick={() => {stateChanger("race")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 left-0'>&larr;</div>
+                <div onClick={() => {stateChanger("pers")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
             </div>
-            <div className="inline-block relative max-w-2xl">
+            <label className="block text-gray-200 text-xl font-bold" htmlFor="races">
+                        Character's class:
+                    </label>
+            <div className="inline-block relative max-w-3xl">
                 <select onChange={handleChange('classes')} name="classes" defaultValue={selected} id="classes" className='text-gray-950 hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
                     <ClassOptions />
                 </select>

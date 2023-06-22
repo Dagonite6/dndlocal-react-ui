@@ -30,12 +30,14 @@ export default function Create() {
                     <div className='flex flex-row gap-2'><CharList /><Logout /></div>
                 </div>
             </div>
-            <StageSelect curStage={stage} stateChanger={setStage}/>
-            <div id='char-content' className="flex flex-col items-center gap-2 my-2 mx-3">
-                {stage === "pers" && <PersStage curName={name} nameChanger={setName} stateChanger={setStage} />}
-                {stage === "race" && <RaceStage stateChanger={setStage} />}
-                {stage === "class" && <ClassStage stateChanger={setStage} />}
-                {stage === "back" && <BgStage stateChanger={setStage} />}
+            <StageSelect curStage={stage} stateChanger={setStage} />
+            <div id='char-content' className="w-full flex justify-center">
+                <div className='flex w-full max-w-3xl flex-col items-center gap-2 mx-2'>
+                    {stage === "pers" && <PersStage curName={name} nameChanger={setName} stateChanger={setStage} />}
+                    {stage === "race" && <RaceStage stateChanger={setStage} />}
+                    {stage === "class" && <ClassStage stateChanger={setStage} />}
+                    {stage === "back" && <BgStage stateChanger={setStage} />}
+                </div>
             </div>
         </>
     )

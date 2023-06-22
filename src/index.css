@@ -2,20 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --text: #021f2c;
-  --background: #ebebeb;
-  --primary-button: #0ba7ea;
-  --secondary-button: #d8f2fd;
-  --accent: #0a96d1;
-}
-
-body, html{
-  height: 100%;
-}
-
-#root {
-  height: 100%;
-}
 
 

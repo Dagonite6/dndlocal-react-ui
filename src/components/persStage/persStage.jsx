@@ -50,9 +50,9 @@ export default function PersStage({ curName, nameChanger, stateChanger }) {
     return (
         <>
             <div className='relative w-full max-w-3xl'>
-                <div onClick={() => { stateChanger("race") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl right-0'>&rarr;</div>
+                <div onClick={() => { stateChanger("race") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
             </div>
-            <div className="inline-block relative max-w-lg">
+            <div className="inline-block relative max-w-3xl">
                 <div className="mb-4">
                     <label className="block text-gray-200 text-sm font-bold mb-2" htmlFor="char-name">
                         Character's name:

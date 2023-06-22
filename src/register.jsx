@@ -71,12 +71,12 @@ export default function Register() {
                         <input onChange={e => setConfirm_password(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:bg-slate-100" name="confirm_password" id="confirm_password" type="password" placeholder="Confirm Password" autoComplete='new-password' required/>
                     </div>
                     <div className="flex justify-center">
-                        <button className="text-center w-2/5 bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <button className="text-center w-2/5 bg-btn hover:bg-btn-hover focus:bg-btn-hover text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" type="submit">
                             Register
                         </button>
                     </div>
                     <div className="pt-[15px] flex justify-center ">
-                        <span onClick={() => navigate('/')} className="cursor-pointer inline-block align-baseline font-bold text-sm text-sky-500 hover:text-sky-800">
+                        <span onClick={() => navigate('/')} className="cursor-pointer inline-block align-baseline font-bold text-sm font-bold text-sm text-btn hover:text-btn-hover focus:text-btn-hover">
                             Already registered? Log in here
                         </span>
                     </div>

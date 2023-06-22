@@ -10,7 +10,7 @@ function CreateBtn() {
     }
 
     return (
-        <div onClick={create} className="bg-slate-50 hover:bg-gray-300 focus:bg-gray-300 drop-shadow-md rounded-md py-2 px-2 cursor-pointer text-gray-950 text-sm font-bold text-center">+ Create New Character</div>
+        <div onClick={create} className="bg-btn hover:bg-btn-hover focus:bg-btn-hover drop-shadow-md rounded-md py-2 px-2 cursor-pointer text-gray-50 text-sm font-bold text-center">+ Create New Character</div>
     )
 }
 
