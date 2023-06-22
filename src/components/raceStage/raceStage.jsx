@@ -16,25 +16,27 @@ async function getRaceDetails(category, id) {
 export default function RaceStage({ stateChanger }) {
     const [races, setRaces] = useState([])
     const [race, setRace] = useState(JSON.parse(localStorage.getItem('race')) ?? {})
-    const [selected, setSelected] = useState(localStorage.getItem('selected') ?? "0")
+    const [selected, setSelected] = useState(localStorage.getItem('selected-race') ?? "0")
+    const [descCol, setDescCol] = useState(true)
 
     useEffect(() => {
         localStorage.setItem('race', JSON.stringify(race));
     }, [race]);
 
     useEffect(() => {
-        localStorage.setItem('selected', selected);
+        localStorage.setItem('selected-race', selected);
     }, [selected]);
 
     const handleChange = (prop) => (event) => {
         setSelected(event.target.value)
-        let raceCache = races.find(race => race['id'] === event.target.value);
+
+        let raceCache = races.find(raceC => raceC['id'] === event.target.value);
+
         if (raceCache) {
-            console.log("Loading race from cache")
             setRace(raceCache)
             return
         }
-        console.log("Fetching race")
+
         async function startFetching() {
             const response = await (await getRaceDetails(prop, event.target.value)).json();
             response.id = event.target.value
@@ -58,7 +60,19 @@ export default function RaceStage({ stateChanger }) {
                     <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                 </div>
             </div>
-            <div className='w-full gap-2 flex-wrap flex flex-row mt-2 max-w-3xl'>
+            {race.lore && <div className='flex flex-col max-w-3xl bg-white drop-shadow-md relative rounded-lg px-3 pt-3 pb-5'>
+                <p className='font-bold text-lg'>About:</p>
+                <div className={`${descCol ? "line-clamp-3" : "line-clamp-none"} indent-8`}>{race.lore.split("<br />").map((str, index) => <p key={index}>{str}</p>)}</div>
+                <div onClick={() => setDescCol(!descCol)} className='cursor-pointer absolute bottom-3 left-1/2 font-bold transform -translate-x-1/2'>{descCol ? "Read More" : "Show Less"}</div>   
+            </div>}
+            {race.size &&
+                    <div className='flex-auto bg-white drop-shadow-md rounded-lg px-3 py-3 max-w-3xl'>
+                        <p className='font-bold text-lg'>Size: <span className='font-normal'>{race.size}</span></p>
+                        <p className='font-bold text-lg'>Speed: <span className='font-normal'>{race.speed}</span></p>
+                        <p className='font-bold text-lg'>Age: <span className='font-normal'>{race.age}</span></p>
+                        <p className='font-bold text-lg'>Languages: <span className='font-normal'>{race.languages.join(", ")}</span></p>
+                    </div>}
+            <div className='w-full gap-2 flex-wrap flex flex-row max-w-3xl'>
                 {race.ability_score &&
                     <div className='flex-auto bg-white drop-shadow-md rounded-lg px-3 py-3'>
                         <p className='font-bold text-lg'>Ability scores bonuses:</p>
@@ -70,16 +84,10 @@ export default function RaceStage({ stateChanger }) {
                     <div className='flex-auto bg-white drop-shadow-md rounded-lg px-3 py-3'>
                         <p className='font-bold text-lg'>Proficiencies:</p>
                         {Object.entries(race.proficiencies).map(([key, value]) => {
-                            return (<li key={key}><span className='font-normal'>{key}: +</span>{value}</li>)
+                            return (<li key={key}>{key}</li>)
                         })}
                     </div>}
-                {race.size &&
-                    <div className='flex-auto bg-white drop-shadow-md rounded-lg px-3 py-3'>
-                        <p className='font-bold text-lg'>Size: <span className='font-normal'>{race.size}</span></p>
-                        <p className='font-bold text-lg'>Speed: <span className='font-normal'>{race.speed}</span></p>
-                        <p className='font-bold text-lg'>Languages: <span className='font-normal'>{race.languages.join(", ")}</span></p>
-                    </div>}
-            </div>
+            </div>      
             {race.inate_abilities && <div className='flex flex-col max-w-3xl bg-white drop-shadow-md rounded-lg px-3 py-3'>
                 <p className='font-bold text-lg'>Inate Abilities:</p>
                 {Object.entries(race.inate_abilities).map(([key, value]) => {

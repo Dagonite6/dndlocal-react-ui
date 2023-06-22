@@ -16,7 +16,7 @@ function Logout() {
         e.preventDefault();
         const response = await invalidate();
         if (response.status === 204 || response.status === 401) {
-            navigate("/login");
+            navigate("/");
         }
     }
 

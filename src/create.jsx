@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Title from './components/title';
-import Logout from "./components/logout";
-import RaceStage from './components/raceStage';
-import CharList from './components/charList';
-import ClassStage from './components/classStage';
+import Logout from "./components/ui_buttons/logout";
+import RaceStage from './components/raceStage/raceStage';
+import CharList from './components/ui_buttons/charList';
+import ClassStage from './components/classStage/classStage';
 import StageSelect from './components/stageSelector';
-import PersStage from './components/persStage';
+import PersStage from './components/persStage/persStage';
+import BgStage from './components/bgStage/bgStage';
 
 
 export default function Create() {
@@ -34,6 +35,7 @@ export default function Create() {
                 {stage === "pers" && <PersStage curName={name} nameChanger={setName} stateChanger={setStage} />}
                 {stage === "race" && <RaceStage stateChanger={setStage} />}
                 {stage === "class" && <ClassStage stateChanger={setStage} />}
+                {stage === "back" && <BgStage stateChanger={setStage} />}
             </div>
         </>
     )

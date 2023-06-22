@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Title from './components/title';
-import Logout from "./components/logout";
-import CreateBtn from "./components/newChar";
+import Logout from "./components/ui_buttons/logout";
+import CreateBtn from "./components/ui_buttons/newChar";
 
 async function getChars() {
     return fetch('http://127.0.0.1:8000/character/', {

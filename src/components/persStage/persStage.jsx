@@ -22,9 +22,9 @@ async function getRaceDetails(category, id) {
     return
 }
 
-export default function ClassStage({stateChanger}) {
-    const [classes, setClasses] = useState([]);
-    const [charClass, setCharClass] = useState({})
+export default function PersStage({ curName, nameChanger, stateChanger }) {
+    // const [classes, setClasses] = useState([]);
+    // const [charClass, setCharClass] = useState({})
 
     // useEffect(() => {
     //     let ignore = false;
@@ -50,15 +50,14 @@ export default function ClassStage({stateChanger}) {
     return (
         <>
             <div className='relative w-full max-w-3xl'>
-                <div onClick={() => {stateChanger("race")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl left-0'>&larr;</div>
-                <div onClick={() => {stateChanger("pers")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl right-0'>&rarr;</div>
+                <div onClick={() => { stateChanger("race") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl right-0'>&rarr;</div>
             </div>
             <div className="inline-block relative max-w-lg">
-                <select onChange={handleChange('races')} name="races" id="races" className='hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
-                    <option key='blankKey' hidden value >Select class    </option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                <div className="mb-4">
+                    <label className="block text-gray-200 text-sm font-bold mb-2" htmlFor="char-name">
+                        Character's name:
+                    </label>
+                    <input onChange={e => nameChanger(e.target.value)} className="bg-slate-50 drop-shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold focus:outline-none focus:shadow-outline focus:bg-slate-100" name="char-name" id="char-name" type="text" value={curName}placeholder=""/>
                 </div>
             </div>
         </>
