@@ -13,7 +13,7 @@ async function getRaceDetails(category, id) {
     })
 }
 
-export default function RaceStage({ stateChanger }) {
+export default function RaceStage({ curName, stateChanger }) {
     const [races, setRaces] = useState([])
     const [race, setRace] = useState(JSON.parse(localStorage.getItem('race')) ?? {})
     const [selected, setSelected] = useState(localStorage.getItem('selected-race') ?? "0")
@@ -53,7 +53,7 @@ export default function RaceStage({ stateChanger }) {
                 <div onClick={() => { stateChanger("class") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
             </div>
             <label className="block text-gray-200 text-xl font-bold" htmlFor="races">
-                        Character's race:
+                        {curName}'s race:
                     </label>
             <div className="inline-block relative max-w-3xl">
                 <select onChange={handleChange('races')} name="races" defaultValue={selected} id="races" className='max-w-[250px] truncate text-gray-950 hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
@@ -65,7 +65,7 @@ export default function RaceStage({ stateChanger }) {
             </div>
             {race.lore && <div className='flex flex-col max-w-3xl bg-card text-text-color drop-shadow-md relative rounded-lg px-3 pt-3 pb-5'>
                 <p className='font-bold text-lg'>About:</p>
-                <div className={`${descCol ? "line-clamp-3 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-900" : "line-clamp-none"} indent-8`}>{race.lore.split("<br />").map((str, index) => <p key={index}>{str}</p>)}</div>
+                <div className={`${descCol ? "line-clamp-3 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-900" : "line-clamp-none"} text-justify indent-8`}>{race.lore.split("<br />").map((str, index) => <p key={index}>{str}</p>)}</div>
                 <div onClick={() => setDescCol(!descCol)} className='cursor-pointer absolute bottom-3 left-1/2 font-bold transform -translate-x-1/2'>{descCol ? "Read More" : "Show Less"}</div>   
             </div>}
             {race.size &&

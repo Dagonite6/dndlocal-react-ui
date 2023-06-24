@@ -13,7 +13,7 @@ async function getBgDetails(category, id) {
     return
 }
 
-export default function BgStage({stateChanger}) {
+export default function BgStage({ curName, stateChanger }) {
     const [bgs, setBgs] = useState([])
     const [bg, setBg] = useState(JSON.parse(localStorage.getItem('bg')) ?? {})
     const [selected, setSelected] = useState(localStorage.getItem('selected-bg') ?? "0")
@@ -49,12 +49,12 @@ export default function BgStage({stateChanger}) {
     return (
         <>
             <div className='relative w-full max-w-3xl'>
-                <div onClick={() => {stateChanger("class")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 left-0'>&larr;</div>
-                <div onClick={() => {stateChanger("stats")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
+                <div onClick={() => { stateChanger("class") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 left-0'>&larr;</div>
+                <div onClick={() => { stateChanger("stats") }} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
             </div>
-            <label className="block text-gray-200 text-xl font-bold" htmlFor="races">
-                        Character's background:
-                    </label>
+            <div className="text-gray-200 text-xl font-bold">
+                {curName}'s background:
+            </div>
             <div className="inline-block relative max-w-3xl">
                 <select onChange={handleChange('bgs')} name="bgs" defaultValue={selected} id="bgs" className='max-w-[250px] truncate text-gray-950 hover:bg-gray-300 cursor-pointer font-semibold block appearance-none bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
                     <BgOptions />
@@ -66,7 +66,7 @@ export default function BgStage({stateChanger}) {
             {bg.content && <div className='flex flex-col max-w-3xl bg-white drop-shadow-md relative rounded-lg px-3 pt-3 pb-5'>
                 <p className='font-bold text-lg'>{bg.content.title}</p>
                 <div className={`${descCol ? "line-clamp-3 text-transparent bg-clip-text bg-gradient-to-b from-gray-900 via-gray-900" : "line-clamp-none"} indent-8`}>{bg.content.text.map((str, index) => <p key={index}>{str}</p>)}</div>
-                <div onClick={() => setDescCol(!descCol)} className='cursor-pointer absolute bottom-3 left-1/2 font-bold transform -translate-x-1/2'>{descCol ? "Read More" : "Show Less"}</div>   
+                <div onClick={() => setDescCol(!descCol)} className='cursor-pointer absolute bottom-3 left-1/2 font-bold transform -translate-x-1/2'>{descCol ? "Read More" : "Show Less"}</div>
             </div>}
             <div className='w-full gap-2 flex-wrap flex flex-row max-w-3xl'>
                 {bg.proficiencies &&
@@ -76,7 +76,19 @@ export default function BgStage({stateChanger}) {
                             return (<li key={index}>{prof}</li>)
                         })}
                     </div>}
-            </div>  
+                {bg.equipment &&
+                    <div className='flex-auto bg-white drop-shadow-md rounded-lg px-3 py-3'>
+                        <p className='font-bold text-lg'>Starting equipment:</p>
+                        {bg.equipment.base.map((item, index) => {
+                            return (<li key={index}>{item.quantity}{item.quantity && " "}{item.name.replace("|Phb", "")} {item.value && "with"} {item.value && item.value / 100} {item.value && "gp"}</li>)
+                        })}
+
+                        {bg.equipment.choice && <p className='font-bold text-lg'>Additionaly chose one of the following:</p>}
+                        {bg.equipment.choice && bg.equipment.choice.map((item, index) => {
+                            return (<li key={index}>{item.quantity}{item.quantity && " "}{item.name.replace("|Phb", "")} {item.value && "with"} {item.value && item.value / 100} {item.value && "gp"}</li>)
+                        })}
+                    </div>}
+            </div>
         </>
     )
 }

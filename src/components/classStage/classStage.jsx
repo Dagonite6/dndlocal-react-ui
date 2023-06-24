@@ -13,7 +13,7 @@ async function getClassDetails(category, id) {
     return
 }
 
-export default function ClassStage({stateChanger}) {
+export default function ClassStage({curName, stateChanger}) {
     const [classes, setClasses] = useState([]);
     const [charClass, setCharClass] = useState(JSON.parse(localStorage.getItem('class')) ?? {})
     const [selected, setSelected] = useState(localStorage.getItem('selected-class') ?? "0")
@@ -49,10 +49,10 @@ export default function ClassStage({stateChanger}) {
         <>
             <div className='relative w-full max-w-3xl'>
                 <div onClick={() => {stateChanger("race")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 left-0'>&larr;</div>
-                <div onClick={() => {stateChanger("pers")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
+                <div onClick={() => {stateChanger("stats")}} className='cursor-pointer absolute text-gray-50 font-extrabold text-4xl top-1.5 right-0'>&rarr;</div>
             </div>
-            <label className="block text-gray-200 text-xl font-bold" htmlFor="races">
-                        Character's class:
+            <label className="block text-gray-200 text-xl font-bold" htmlFor="classes">
+                        {curName}'s class:
                     </label>
             <div className="inline-block relative max-w-3xl">
                 <select onChange={handleChange('classes')} name="classes" defaultValue={selected} id="classes" className='text-gray-950 hover:bg-gray-300 cursor-pointer font-semibold block appearance-none w-full bg-gray-50 px-4 py-2 pr-8 rounded-md drop-shadow-md focus:outline-none focus:shadow-outline'>
